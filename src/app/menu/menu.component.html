@@ -1,13 +1,13 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div><a href ="#" class="navbar-brand">ToDo application</a></div>
-        <ul class="navbar-nav">
-            <li><a routerLink="/welcome/test" class="nav-link">Home</a></li>
-            <li><a routerLink="/listTodos" class="nav-link">ToDos</a></li>
+        <ul class="navbar-nav" >
+            <li><a *ngIf="this.hardCodedAuthService.isUserLoggedIn()" routerLink="/welcome/test" class="nav-link">Home</a></li>
+            <li><a  *ngIf="this.hardCodedAuthService.isUserLoggedIn()" routerLink="/listTodos" class="nav-link">ToDos</a></li>
         </ul>
         <ul class="navbar-nav navbar-collapse justify-content-end">
-            <li><a routerLink="/login" class="nav-link">Login</a></li>
-            <li><a routerLink="/logout" class="nav-link">Logout</a></li>
+            <li><a routerLink="/login" class="nav-link"*ngIf="!this.hardCodedAuthService.isUserLoggedIn()">Login</a></li>
+            <li><a routerLink="/logout" class="nav-link" *ngIf="this.hardCodedAuthService.isUserLoggedIn()">Logout</a></li>
         </ul>
     </nav>
 </header>
